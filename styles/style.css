@@ -1,0 +1,11 @@
+#options{
+    display: none;
+}
+
+#coordonnees{
+    display: none;
+}
+
+.bouton, .bouton2{
+    cursor: pointer;
+}
