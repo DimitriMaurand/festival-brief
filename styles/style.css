@@ -6,6 +6,6 @@
     display: none;
 }
 
-.bouton{
+.bouton, .bouton2{
     cursor: pointer;
 }
