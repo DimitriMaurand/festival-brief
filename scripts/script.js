@@ -2,6 +2,8 @@
 function suivant() {
     let element = document.getElementById("options");
     element.style.display = "block";
+    element.style.transition = "opacity 2s ease";
+
 }
 
 

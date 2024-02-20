@@ -1,20 +1,29 @@
-body {
-
-    background-image: url(../medias/hanny-naibaho-awxvxy8bszc-unsplash-65c633c9a7b49772692926.webp);
-    color: white;
-    background-repeat: no-repeat;
+body{
+    background-image: url(../médias/hanny-naibaho-awxvxy8bszc-unsplash-65c633c9a7b49772692926.webp);
     background-size: cover;
+    background-repeat: no-repeat;
+    color: white;
 }
 
-#options {
+#options{
     display: none;
+    transition: opacity 2s ease;
 }
 
 #coordonnees {
     display: none;
+    
 }
 
 .bouton,
 .bouton2 {
     cursor: pointer;
+}
+
+#pass1jourDate{
+    border: solid 1px black;
+}
+
+#pass2joursDate{
+    border: solid 1px black;
 }
