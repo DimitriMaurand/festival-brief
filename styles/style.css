@@ -5,25 +5,79 @@ body{
     color: white;
 }
 
+legend{
+    font-size: 2rem;
+}
+
+#reservation, #options, #coordonnees{
+    width: 70%;
+    margin:5% 15%;
+    border: solid 10px white;
+    background-color: rgba(0, 0, 0, 0.33);
+}
+
+
+
 #options{
     display: none;
     transition: opacity 2s ease;
+    flex-direction: column;
 }
 
 #coordonnees {
     display: none;
-    
+
+    flex-direction: column;
+   
 }
 
 .bouton,
 .bouton2 {
     cursor: pointer;
+    background-color: black;
+    width: fit-content;
+    padding: 5px;
+    font-size: 1.3rem;
+}
+
+.bouton3{
+    width: 70px;
+    margin: 1%;
+}
+
+.box{
+    margin: 0.3%;
 }
 
 #pass1jourDate{
-    border: solid 1px black;
+    
+display: flex;
+flex-direction: column;
 }
 
-#pass2joursDate{
-    border: solid 1px black;
+#pass2joursDate, .tarif, .tarifReduit,.jour1 , .cadre{
+    margin: 3%;
+    border: solid 4px white;
+    display: flex;
+    flex-direction: column;
+}
+
+.champ{
+    width: 300px;
+}
+
+.tarifReduit {
+  display: none; 
+}
+
+input[type="checkbox"]:checked + .tarifReduit{
+  display: block;
+}
+
+.enfant {
+  display: none;
+}
+
+input[type="checkbox"][name="enfantsOui"]:checked ~ .enfant {
+  display: block;
 }
