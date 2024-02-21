@@ -1,4 +1,3 @@
-
 function suivant() {
     let element = document.getElementById("options");
     let element2 = document.getElementById("reservation");
