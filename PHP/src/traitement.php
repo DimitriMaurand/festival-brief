@@ -32,4 +32,12 @@ if (
     && isset($_POST['prenom']) && isset($_POST['email']) && isset($_POST['telephone'])
     && isset($_POST['adressePostale'])
 ) {
+    $nom = htmlentities($_POST['nom']);
+    $prenom = htmlentities($_POST['prenom']);
+    if (filter_var($_POST['mail'], FILTER_VALIDATE_EMAIL)) {
+        $mail = htmlentities($_POST['mail']);
+    } else {
+        header('location:/../index.php?erreur=' . ERREUR_EMAIL);
+        die;
+    }
 };

@@ -9,6 +9,7 @@ legend {
     font-size: 2rem;
 }
 
+
 #reservation,
 #options,
 #coordonnees {
@@ -18,7 +19,12 @@ legend {
     background-color: rgba(0, 0, 0, 0.33);
 }
 
-
+#connexion{
+    width: 50%;
+    margin: 25% 25%;
+    border: solid 10px white;
+    background-color: rgba(0, 0, 0, 0.33);
+}
 
 #options {
     display: none;
