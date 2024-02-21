@@ -1,24 +1,26 @@
-body{
+body {
     background-image: url(../médias/hanny-naibaho-awxvxy8bszc-unsplash-65c633c9a7b49772692926.webp);
     background-size: cover;
     background-repeat: no-repeat;
     color: white;
 }
 
-legend{
+legend {
     font-size: 2rem;
 }
 
-#reservation, #options, #coordonnees{
+#reservation,
+#options,
+#coordonnees {
     width: 70%;
-    margin:5% 15%;
+    margin: 5% 15%;
     border: solid 10px white;
     background-color: rgba(0, 0, 0, 0.33);
 }
 
 
 
-#options{
+#options {
     display: none;
     transition: opacity 2s ease;
     flex-direction: column;
@@ -28,7 +30,7 @@ legend{
     display: none;
 
     flex-direction: column;
-   
+
 }
 
 .bouton,
@@ -40,44 +42,49 @@ legend{
     font-size: 1.3rem;
 }
 
-.bouton3{
+.bouton3 {
     width: 70px;
     margin: 1%;
 }
 
-.box{
+.box {
     margin: 0.3%;
 }
 
-#pass1jourDate{
-    
-display: flex;
-flex-direction: column;
-}
+#pass1jourDate {
 
-#pass2joursDate, .tarif, .tarifReduit,.jour1 , .cadre{
-    margin: 3%;
-    border: solid 4px white;
     display: flex;
     flex-direction: column;
 }
 
-.champ{
+#pass2joursDate,
+.tarif,
+.tarifReduit,
+.jour1,
+.cadre {
+    margin: 3%;
+    border: solid 4px white;
+    display: flex;
+    flex-direction: column;
+    padding: 1%;
+}
+
+.champ {
     width: 300px;
 }
 
 .tarifReduit {
-  display: none; 
+    display: none;
 }
 
-input[type="checkbox"]:checked + .tarifReduit{
-  display: block;
+input[type="checkbox"]:checked+.tarifReduit {
+    display: block;
 }
 
 .enfant {
-  display: none;
+    display: none;
 }
 
-input[type="checkbox"][name="enfantsOui"]:checked ~ .enfant {
-  display: block;
+input[type="checkbox"][name="enfantsOui"]:checked~.enfant {
+    display: block;
 }
