@@ -29,20 +29,24 @@ const checkbox = document.getElementById('tarifReduit');
 const checkboxEnfantsOui = document.getElementById('enfantsOui');
 // Récupère la div
 const divTarifReduit = document.querySelector('.tarifReduit');
-const sectionEnfant = document.querySelector('.enfant');
+const divEnfant = document.querySelector('.enfant');
 
 checkbox.addEventListener('change', () => {
     if (checkbox.checked) {
         divTarifReduit.style.display = 'block';
+        console.log(checkbox.checked)
     } else {
         divTarifReduit.style.display = 'none';
     }
 });
 
-checkboxEnfantsOui.addEventListener('change', () => {
+checkboxEnfantsOui.addEventListener('change', function () {
+
     if (checkboxEnfantsOui.checked) {
-        sectionEnfant.style.display = 'block';
+        divEnfant.style.display = 'block';
+        console.log(checkboxEnfantsOui.checked)
     } else {
-        sectionEnfant.style.display = 'none';
+        divEnfant.style.display = 'none';
     }
 });
+

@@ -59,6 +59,7 @@ flex-direction: column;
     border: solid 4px white;
     display: flex;
     flex-direction: column;
+    padding: 1%;
 }
 
 .champ{
