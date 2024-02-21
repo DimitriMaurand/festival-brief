@@ -89,3 +89,11 @@ input[type="checkbox"]:checked+.tarifReduit {
 input[type="checkbox"][name="enfantsOui"]:checked~.enfant {
     display: block;
 }
+
+#pass1jourDate{
+    display: none;
+}
+
+input[type="checkbox"][name="passSelection"]:checked+.pass1jourDate {
+    display: block;
+}
