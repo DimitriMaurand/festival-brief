@@ -9,6 +9,16 @@ class Reservateurs
     private $_adressePostale;
 }
 
+/**
+ * Création d'un nouvel utilisateur
+ * @param string $nom      Le nom de l'utilisateur
+ * @param string $prenom   Le prénom de l'utilisateur
+ * @param string $mail     Le mail de l'utilisateur
+ * * @param int $telephone       Le numero lode telephone de l'utilisateur
+ * @param string $adressePostale L'adresse postale de l'utilisateur
+ * @param int $id       L'id de l'utilisateur si on le connait, sinon rien.
+ */
+
 function __construct(string $nom, string $prenom, string $email, string $telephone, string $adressePostale, int|string $id = "à créer")
 {
     $this->setId($id);
@@ -18,3 +28,4 @@ function __construct(string $nom, string $prenom, string $email, string $telepho
     $this->setTelephone($telephone);
     $this->setAdressePostale($adressePostale);
 };
+
