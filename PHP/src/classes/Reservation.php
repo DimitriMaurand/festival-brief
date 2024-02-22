@@ -163,14 +163,14 @@ class Reservation
         $Database = new Database();
         $clients = $Database->getAllClients();
 
-        // On crée un tableau dans lequel on stockera tous les ids existants.
+
         $IDs = [];
 
         foreach ($clients as $client) {
             $IDs[] = $client->getId();
         }
 
-        // Ensuite, on regarde si un chiffre existe dans le tableau, et si non, on l'incrémente
+
         $i = 1;
         $unique = false;
         while ($unique === false) {
@@ -185,7 +185,7 @@ class Reservation
 
 
 
-    public function getObjectToArray(): array
+    public function getObjectToReservation(): array
     {
         return [
             "id" => $this->getId(),
