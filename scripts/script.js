@@ -1,3 +1,5 @@
+// changement de none à block en appuyant sur suivant
+
 function suivant() {
     let element = document.getElementById("options");
     let element2 = document.getElementById("reservation");
@@ -59,3 +61,17 @@ checkboxUnJour.addEventListener('change', function () {
         sectionPass1jourDate.style.display = 'none';
     }
 });
+
+// choix unique de checkbox
+let pass1jour = document.getElementById('pass1jour');
+
+pass1jour.addEventListener('change', () => {
+    if (pass1jour.checked) {
+        document.getElementById('pass1jourDate').style.display = "block";
+    } else {
+        document.getElementById('pass1jourDate').style.display = "none";
+        choixJour1.checked = false;
+        choixJour2.checked = false;
+        choixJour3.checked = false;
+    }
+})

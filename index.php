@@ -1,3 +1,21 @@
+<?php
+session_start();
+
+if (isset($_SESSION['connecté']) && !empty($_SESSION['user'])) {
+  // abort
+  header('location:tableau-de-bord.php');
+  die;
+}
+
+$code_erreur = null;
+if (isset($_GET['erreur'])) {
+  $code_erreur = (int) $_GET['erreur'];
+}
+
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -22,21 +40,21 @@
 
       <div class="jour1">
         <div class="box">
-          <input type="checkbox" name="passSelection" id="pass1jour">
-          <label for="pass1jour">Pass 1 jour : 40€</label>
+          <input type="checkbox" name="pass1jour" id="pass1jour">
+          <label for=" pass1jour">Pass 1 jour : 40€</label>
         </div>
         <!-- Si case cochée, afficher le choix du jour -->
         <section id="pass1jourDate">
           <div class="box">
-            <input type="checkbox" name="passSelection" id="choixJour1">
+            <input type="checkbox" name="choixJour1" id="choixJour1" class="passSelection">
             <label for="choixJour1">Pass pour la journée du 01/07</label>
           </div>
           <div class="box">
-            <input type="checkbox" name="passSelection" id="choixJour2">
+            <input type="checkbox" name="choixJour2" id="choixJour2" class="passSelection">
             <label for="choixJour2">Pass pour la journée du 02/07</label>
           </div>
           <div class="box">
-            <input type="checkbox" name="passSelection" id="choixJour3">
+            <input type="checkbox" name="choixJour3" id="choixJour3" class="passSelection">
             <label for="choixJour3">Pass pour la journée du 03/07</label>
           </div>
         </section>
@@ -45,36 +63,36 @@
       <!-- Si case cochée, afficher le choix des jours -->
       <section id="pass2joursDate">
         <div class="box">
-          <input type="checkbox" name="passSelection" id="choixJour12">
+          <input type="checkbox" name="choixJour12" id="choixJour12">
           <label for="choixJour12">Pass pour deux journées du 01/07 au 02/07</label>
         </div>
         <div class="box">
-          <input type="checkbox" name="passSelection" id="choixJour23">
+          <input type="checkbox" name="choixJour23" id="choixJour23">
           <label for="choixJour23">Pass pour deux journées du 02/07 au 03/07</label>
         </div>
       </section>
       <div class="tarif">
         <div class="box">
-          <input type="checkbox" name="passSelection" id="pass2jours">
+          <input type="checkbox" name="pass2jours" id="pass2jours">
           <label for="pass2jours">Pass 2 jours : 70€</label>
         </div>
         <div class="box">
-          <input type="checkbox" name="passSelection" id="pass3jours">
+          <input type="checkbox" name="pass3jours" id="pass3jours">
           <label for="pass3jours">Pass 3 jours : 100€</label>
         </div>
       </div>
       <!-- tarifs réduits : à n'afficher que si tarif réduit est sélectionné -->
       <div class="tarifReduit">
         <div class="box">
-          <input type="checkbox" name="passSelection" id="pass1jour">
+          <input type="checkbox" name="pass1jour" id="pass1jour">
           <label for="pass1jour">Pass 1 jour : 25€</label>
         </div>
         <div class="box">
-          <input type="checkbox" name="passSelection" id="pass2jours">
+          <input type="checkbox" name="pass2jours" id="pass2jours">
           <label for="pass2jours">Pass 2 jours : 50€</label>
         </div>
         <div class="box">
-          <input type="checkbox" name="passSelection" id="pass3jours">
+          <input type="checkbox" name="pass3jours" id="pass3jours">
           <label for="pass3jours">Pass 3 jours : 65€</label>
         </div>
       </div>
@@ -156,6 +174,11 @@
       <input class="champ" type="text" name="prenom" id="prenom" required><br>
       <label for="email">Email :</label>
       <input class="champ" type="email" name="email" id="email" required>
+      <?php if ($code_erreur === 3) { ?>
+        <div class="message echec">
+          L'Email n'est pas valide.
+        </div>
+      <?php } ?>
       <label for="telephone">Téléphone :</label>
       <input class="champ" type="text" name="telephone" id="telephone" required>
       <label for="adressePostale">Adresse Postale :</label>
