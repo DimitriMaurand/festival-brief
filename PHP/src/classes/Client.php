@@ -1,5 +1,5 @@
 <?php
-class Reservateur
+class Client
 {
     private $_id;
     private $_nom;
@@ -29,6 +29,8 @@ class Reservateur
         $this->setId($id);
     }
 
+
+
     public function getId(): int
     {
         return $this->_id;
@@ -41,6 +43,9 @@ class Reservateur
             $this->_id = $id;
         }
     }
+
+
+
     public function getNom(): string
     {
         return $this->_nom;
@@ -49,6 +54,9 @@ class Reservateur
     {
         $this->_nom = $nom;
     }
+
+
+
     public function getPrenom(): string
     {
         return $this->_prenom;
@@ -57,6 +65,9 @@ class Reservateur
     {
         $this->_prenom = $prenom;
     }
+
+
+
     public function getTelephone(): string
     {
         return $this->_telephone;
@@ -65,6 +76,9 @@ class Reservateur
     {
         $this->_telephone = $telephone;
     }
+
+
+
     public function getEmail(): string
     {
         return $this->_email;
@@ -73,6 +87,8 @@ class Reservateur
     {
         $this->_email = $email;
     }
+
+
 
     public function getAdressePostale(): string
     {
@@ -83,18 +99,17 @@ class Reservateur
         $this->_adressePostale = $_adressePostale;
     }
 
+
+
     private function CreerNouvelId()
     {
         $Database = new Database();
-        $utilisateurs = $Database->getAllReservateurs();
-
+        $clients = $Database->getAllClients();
         // On crée un tableau dans lequel on stockera tous les ids existants.
         $IDs = [];
-
-        foreach ($utilisateurs as $utilisateur) {
-            $IDs[] = $utilisateur->getId();
+        foreach ($clients as $client) {
+            $IDs[] = $client->getId();
         }
-
         // Ensuite, on regarde si un chiffre existe dans le tableau, et si non, on l'incrémente
         $i = 1;
         $unique = false;
@@ -107,16 +122,15 @@ class Reservateur
         }
         return $i;
     }
-
     public function getObjectToArray(): array
     {
         return [
             "id" => $this->getId(),
             "nom" => $this->getNom(),
             "prenom" => $this->getPrenom(),
-            "email" => $this->getEmail(),
             "telephone" => $this->getTelephone(),
-            "adressePostale" => $this->getAdressePostale()
+            "mail" => $this->getEmail(),
+            "adresse postale" => $this->getAdressePostale()
         ];
     }
 }
