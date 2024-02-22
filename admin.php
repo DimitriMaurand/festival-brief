@@ -1,3 +1,4 @@
+
 <?php
 session_start();
 // Vérification du mot de passe
@@ -17,6 +18,7 @@ if (isset($_GET['erreur'])) {
 
 
 ?>
+
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -24,12 +26,14 @@ if (isset($_GET['erreur'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Page Admin</title>
+
     <link rel="stylesheet" href="./styles/style.css">
 </head>
 
 <body>
     <fieldset id="connexion" class="connexion">
         <legend>Connexion</legend>
+
         <label for="password">Mot de passe :</label>
         <input type="password" name="password" id="password" required>
         <div id="message"></div>
@@ -38,8 +42,10 @@ if (isset($_GET['erreur'])) {
                 Mot de passe ou email invalide.
             </div>
         <?php } ?>
+
         <input type="submit" value="Se connecter" class="bouton3">
     </fieldset>
+
 
 </html>
 </body>

@@ -60,6 +60,7 @@ checkboxUnJour.addEventListener('change', function () {
     } else {
         sectionPass1jourDate.style.display = 'none';
     }
+
 });
 
 // choix unique de checkbox
@@ -75,3 +76,4 @@ pass1jour.addEventListener('change', () => {
         choixJour3.checked = false;
     }
 })
+

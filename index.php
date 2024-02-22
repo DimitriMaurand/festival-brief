@@ -1,3 +1,4 @@
+
 <?php
 session_start();
 
@@ -41,11 +42,14 @@ if (isset($_GET['erreur'])) {
       <div class="jour1">
         <div class="box">
           <input type="checkbox" name="pass1jour" id="pass1jour">
+
           <label for=" pass1jour">Pass 1 jour : 40€</label>
+
         </div>
         <!-- Si case cochée, afficher le choix du jour -->
         <section id="pass1jourDate">
           <div class="box">
+
             <input type="checkbox" name="choixJour1" id="choixJour1" class="passSelection">
             <label for="choixJour1">Pass pour la journée du 01/07</label>
           </div>
@@ -55,6 +59,7 @@ if (isset($_GET['erreur'])) {
           </div>
           <div class="box">
             <input type="checkbox" name="choixJour3" id="choixJour3" class="passSelection">
+
             <label for="choixJour3">Pass pour la journée du 03/07</label>
           </div>
         </section>
@@ -174,11 +179,13 @@ if (isset($_GET['erreur'])) {
       <input class="champ" type="text" name="prenom" id="prenom" required><br>
       <label for="email">Email :</label>
       <input class="champ" type="email" name="email" id="email" required>
+
       <?php if ($code_erreur === 3) { ?>
         <div class="message echec">
           L'Email n'est pas valide.
         </div>
       <?php } ?>
+
       <label for="telephone">Téléphone :</label>
       <input class="champ" type="text" name="telephone" id="telephone" required>
       <label for="adressePostale">Adresse Postale :</label>
