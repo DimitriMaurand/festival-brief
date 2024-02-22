@@ -1,12 +1,7 @@
-
 <?php
 session_start();
 
-if (isset($_SESSION['connecté']) && !empty($_SESSION['user'])) {
-  // abort
-  header('location:tableau-de-bord.php');
-  die;
-}
+
 
 $code_erreur = null;
 if (isset($_GET['erreur'])) {
@@ -28,6 +23,11 @@ if (isset($_GET['erreur'])) {
 </head>
 
 <body>
+  <div class="divConnex">
+    <a href="./admin.php">
+      <p class="plien">Connexion</p>
+    </a>
+  </div>
   <form action="traitement.php" id="inscription" method="POST">
     <fieldset id="reservation" class="fieldset">
       <legend>Réservation</legend>

@@ -1,22 +1,46 @@
 <?php
+require 'config.php';
+require 'classes/Client.php';
+require 'classes/Database.php';
+require 'classes/Reservation.php';
 // Les éléments à cocher
 
 //récupération
 $recupNombrePlaces = $_POST['nombrePlaces'];
 $recupTarifReduit = $_POST['tarifReduit'];
-$recupPassSelection = $_POST['passSelection'];
+
+$recupPass1jour = $_POST['pass1jour'];
+
+$recupChoixJour1 = $_POST['choixJour1'];
+$recupChoixJour2 = $_POST['choixJour2'];
+$recupChoixJour3 = $_POST['choixJour3'];
+
+$recupChoixJour12 = $_POST['choixJour12'];
+$recupChoixJour23 = $_POST['choixJour23'];
+
+$recupPass2jours = $_POST['pass2jours'];
+$recupPass3jours = $_POST['pass3jours'];
+
+$recupPass1jour = $_POST['pass1jour'];
+$recupPass2jour = $_POST['pass2jour'];
+$recupPass3jour = $_POST['pass3jour'];
+
 $recupTenteNuit1 = $_POST['tenteNuit1'];
 $recupTenteNuit2 = $_POST['tenteNuit2'];
 $recupTenteNuit3 = $_POST['tenteNuit3'];
 $recupTente3Nuits = $_POST['tente3Nuits'];
+
 $recupVanNuit1 = $_POST['vanNuit1'];
 $recupVanNuit2 = $_POST['vanNuit2'];
 $recupVanNuit3 = $_POST['vanNuit3'];
 $recupVan3Nuits = $_POST['van3Nuits'];
+
 $recupEnfantsOui = $_POST['enfantsOui'];
 $recupEnfantsNon = $_POST['enfantsNon'];
+
 $recupNombreCasquesEnfants = $_POST['nombreCasquesEnfants'];
 $recupNombreLugesEte = $_POST['NombreLugesEte'];
+
 $recupNom = $_POST['nom'];
 $recupPrenom = $_POST['prenom'];
 $recupEmail = $_POST['email'];
@@ -58,11 +82,45 @@ if (
         die;
     }
 
-    
 
-    $user = new User($nom, $prenom, $mail, $adressePostale);
+
+    $client = new Client($recupNom, $$recupPrenom, $recupTelephone, $recupEmail, $recupAdressePostale);
     $Database = new Database();
-    if ($Database->saveUtilisateur($user)) {
+    if ($Database->saveClient($client)) {
+        header('location:/../confirmation.php');
+    } else {
+        header('location:/../index.php?erreur=' . ERREUR_ENREGISTREMENT);
+    }
+
+    $donnee = new Donnee(
+        $recupNombrePlaces,
+        $$recupTarifReduit,
+        $recupPass1jour,
+        $recupChoixJour1,
+        $recupChoixJour2,
+        $recupChoixJour3,
+        $recupChoixJour12,
+        $recupChoixJour23,
+        $recupPass2jours,
+        $recupPass3jours,
+        $recupPass1jour,
+        $recupPass2jour,
+        $recupPass3jour,
+        $recupVanNuit1,
+        $recupVanNuit2,
+        $recupVanNuit3,
+        $recupVan3Nuits,
+        $recupTenteNuit1,
+        $recupTenteNuit2,
+        $recupTenteNuit3,
+        $recupTente3Nuits,
+        $recupEnfantsOui,
+        $recupEnfantsNon,
+        $recupNombreCasquesEnfants,
+        $recupNombreLugesEte
+    );
+    $Reservation = new Reservation();
+    if ($Database->saveClient($client)) {
         header('location:/../confirmation.php');
     } else {
         header('location:/../index.php?erreur=' . ERREUR_ENREGISTREMENT);
@@ -71,4 +129,3 @@ if (
     header('location:/../index.php?erreur=' . ERREUR_CHAMP_VIDE);
     die;
 }
-};
