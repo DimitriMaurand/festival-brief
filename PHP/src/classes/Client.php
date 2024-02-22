@@ -122,7 +122,7 @@ class Client
         }
         return $i;
     }
-    public function getObjectToArray(): array
+    public function getObjectToClient(): array
     {
         return [
             "id" => $this->getId(),
