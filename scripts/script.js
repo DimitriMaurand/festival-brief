@@ -26,14 +26,15 @@ bouton2.addEventListener("click", suivant2);
 // Récupère la case à cocher
 const checkbox = document.getElementById('tarifReduit');
 const checkboxEnfantsOui = document.getElementById('enfantsOui');
+const checkboxUnJour = document.getElementById('pass1jour');
 // Récupère la div
 const divTarifReduit = document.querySelector('.tarifReduit');
 const divEnfant = document.querySelector('.enfant');
+const sectionPass1jourDate = document.getElementById('pass1jourDate');
 
 checkbox.addEventListener('change', () => {
     if (checkbox.checked) {
         divTarifReduit.style.display = 'block';
-        console.log(checkbox.checked)
     } else {
         divTarifReduit.style.display = 'none';
     }
@@ -43,9 +44,18 @@ checkboxEnfantsOui.addEventListener('change', function () {
 
     if (checkboxEnfantsOui.checked) {
         divEnfant.style.display = 'block';
-        console.log(checkboxEnfantsOui.checked)
+
     } else {
         divEnfant.style.display = 'none';
     }
 });
 
+checkboxUnJour.addEventListener('change', function () {
+
+    if (checkboxUnJour.checked) {
+        sectionPass1jourDate.style.display = 'block';
+
+    } else {
+        sectionPass1jourDate.style.display = 'none';
+    }
+});
