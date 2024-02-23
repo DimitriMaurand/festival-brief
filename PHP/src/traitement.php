@@ -66,6 +66,10 @@ if (
 ) {
     $nom = htmlentities($_POST['nom']);
     $prenom = htmlentities($_POST['prenom']);
+    $AdressePostale = htmlentities($_POST['adressePostale']);
+    $Telephone = htmlentities($_POST['telephone']);
+
+
 
     if (filter_var($_POST['mail'], FILTER_VALIDATE_EMAIL)) {
         $mail = htmlentities($_POST['mail']);
@@ -100,6 +104,7 @@ if (
     header('location:/../index.php?erreur=' . ERREUR_CHAMP_VIDE);
     die;
 }
+
 $client = new Client(
     $recupNombrePlaces,
     $recupTarifReduit,
@@ -129,6 +134,7 @@ $client = new Client(
 );
 $Reservation = new Reservation($reservation[0], $reservation[1], $reservation[2], $reservation[3], $reservation[4], $reservation[5], $reservation[6], $reservation[7], $reservation[8], $reservation[9], $reservation[10], $reservation[11], $reservation[12], $reservation[13], $reservation[14], $reservation[15], $reservation[16], $reservation[17], $reservation[18], $reservation[19], $reservation[20], $reservation[21], $reservation[22], $reservation[23], $reservation[24], $reservation[25], $reservation[26], $reservation[27], $reservation[28], $reservation[29]);
 if ($Database->savereservations($reservations)) {
+
     header('location:/../confirmation.php');
 } else {
     header('location:/../index.php?erreur=' . ERREUR_ENREGISTREMENT);
