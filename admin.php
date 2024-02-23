@@ -1,18 +1,13 @@
 <?php
 session_start();
 // Vérification du mot de passe
-$expected_password = 'Festival2024!'; // mot de passe souhaité
+// Mot de passe souhaité
+$expected_password = 'MonMotDePasseSecret';
 
 if (isset($_POST['password']) && $_POST['password'] === $expected_password) {
-    header('location:tableau-de-bord.php');
+    // Mot de passe correct, autoriser l'accès à la page protégée
+    header('Location: page-protegee.php');
     die;
-}
-
-$echec = null;
-
-
-if (isset($_GET['erreur'])) {
-    $echec = true;
 }
 
 
@@ -35,24 +30,36 @@ if (isset($_GET['erreur'])) {
             <p class="plien">Retour</p>
         </a>
     </div>
-    <fieldset id="connexion" class="connexion">
-        <legend>Connexion</legend>
+    <form action="php/src/traitement.php">
+        <fieldset id=" connexion" class="connexion">
+            <legend>Connexion</legend>
 
-        <label for="password">Mot de passe :</label>
-        <input type="password" name="password" id="password" required>
-        <div id="message"></div>
-        <div id="message"></div>
-        <?php if ($echec) { ?>
-            <div class="message echec">
-                Mot de passe invalide.
-            </div>
-        <?php } ?>
+            <label for="password">Mot de passe :</label>
+            <input type="password" name="password" id="password" required>
+            <div id="message"></div>
+            <div id="message"></div>
+            <?php if ($echec) { ?>
+                <div class="message echec">
+                    Mot de passe invalide.
+                </div>
+            <?php } ?>
 
-        <input type="submit" value="Se connecter" class="bouton3">
-    </fieldset>
-
+            <input type="submit" value="Se connecter" class="bouton3">
+        </fieldset>
+    </form>
 
 </html>
 </body>
 
 </html>
+<?php
+session_start();
+
+// Mot de passe souhaité
+$expected_password = 'MonMotDePasseSecret';
+
+if (isset($_POST['password']) && $_POST['password'] === $expected_password) {
+    // Mot de passe correct, autoriser l'accès à la page protégée
+    header('Location: page-protegee.php');
+    die;
+}
