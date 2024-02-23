@@ -37,10 +37,14 @@ const sectionPass1jourDate = document.getElementById('pass1jourDate');
 checkbox.addEventListener('change', () => {
     if (checkbox.checked) {
         divTarifReduit.style.display = 'block';
+
     } else {
         divTarifReduit.style.display = 'none';
+
     }
 });
+
+
 
 checkboxEnfantsOui.addEventListener('change', function () {
 

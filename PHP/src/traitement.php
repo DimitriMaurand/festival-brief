@@ -66,6 +66,10 @@ if (
 ) {
     $nom = htmlentities($_POST['nom']);
     $prenom = htmlentities($_POST['prenom']);
+    $AdressePostale = htmlentities($_POST['adressePostale']);
+    $Telephone = htmlentities($_POST['telephone']);
+
+
 
     if (filter_var($_POST['mail'], FILTER_VALIDATE_EMAIL)) {
         $mail = htmlentities($_POST['mail']);
@@ -100,35 +104,35 @@ if (
     header('location:/../index.php?erreur=' . ERREUR_CHAMP_VIDE);
     die;
 }
-$donnee = new Donnee(
-    $recupNombrePlaces,
-    $recupTarifReduit,
-    $recupPass1jour,
-    $recupChoixJour1,
-    $recupChoixJour2,
-    $recupChoixJour3,
-    $recupChoixJour12,
-    $recupChoixJour23,
-    $recupPass2jours,
-    $recupPass3jours,
+// $donnee = new Donnee(
+//     $recupNombrePlaces,
+//     $recupTarifReduit,
+//     $recupPass1jour,
+//     $recupChoixJour1,
+//     $recupChoixJour2,
+//     $recupChoixJour3,
+//     $recupChoixJour12,
+//     $recupChoixJour23,
+//     $recupPass2jours,
+//     $recupPass3jours,
 
-    $recupPass2jour,
-    $recupPass3jour,
-    $recupVanNuit1,
-    $recupVanNuit2,
-    $recupVanNuit3,
-    $recupVan3Nuits,
-    $recupTenteNuit1,
-    $recupTenteNuit2,
-    $recupTenteNuit3,
-    $recupTente3Nuits,
-    $recupEnfantsOui,
-    $recupEnfantsNon,
-    $recupNombreCasquesEnfants,
-    $recupNombreLugesEte
-);
+//     $recupPass2jour,
+//     $recupPass3jour,
+//     $recupVanNuit1,
+//     $recupVanNuit2,
+//     $recupVanNuit3,
+//     $recupVan3Nuits,
+//     $recupTenteNuit1,
+//     $recupTenteNuit2,
+//     $recupTenteNuit3,
+//     $recupTente3Nuits,
+//     $recupEnfantsOui,
+//     $recupEnfantsNon,
+//     $recupNombreCasquesEnfants,
+//     $recupNombreLugesEte
+// );
 $Reservation = new Reservation();
-if ($Database->savereservations($donnee)) {
+if ($Database->savereservations($réservation)) {
     header('location:/../confirmation.php');
 } else {
     header('location:/../index.php?erreur=' . ERREUR_ENREGISTREMENT);
