@@ -33,117 +33,117 @@ class Reservation
     private $_tarif;
 
 
-    function __construct(string $recupNom, string $recupPrenom, string $recupEmail, int|string $recupId = "à créer", int $recupNombrePlaces, bool $recupTarifReduit, string $recupPass1jour, string $recupChoixJour1, string $recupChoixJour2, string $recupChoixJour3, string $recupChoixJour12, string $recupChoixJour23, string $recupPass2jours, string $recupPass3jours, string $recupEmplacementVan, string $recupVanNuit1, string $recupVanNuit2, string $recupVanNuit3, string $recupVan3Nuits, string $recupEmplacementTente, string $recupTenteNuit1, string  $recupTenteNuit2, string $recupTenteNuit3, string $recupTente3Nuits, string $recupEnfantsOui, string $recupEnfantsNon,  int $recupNombreCasquesEnfants, int $recupNombreLugesEte, int $recupTarif)
+    function __construct(string $nom, string $prenom, string $email, int $places, bool $tarifReduit, string $pass1jour, string $choixJour1, string $choixJour2, string $choixJour3, string $choixJour12, string $choixJour23, string $pass2jours, string $pass3jours, string $emplacementVan, string $vanNuit1, string $vanNuit2, string $vanNuit3, string $van3Nuits, string $emplacementTente, string $tenteNuit1, string  $tenteNuit2, string $tenteNuit3, string $tente3Nuits, string $enfantsOui, string $enfantsNon,  int $nombreCasquesEnfants, int $nombreLugesEte, int $tarif, int|string $id = "à créer",)
     {
-        $this->setId($recupId);
-        $this->setNom($recupNom);
-        $this->setPrenom($recupPrenom);
-        $this->setMail($recupEmail);
-        $this->setNombreResa($recupNombrePlaces);
-        $this->setTarifReduit($recupTarifReduit);
-        $this->setPass1jour($recupPass1jour);
-        $this->setChoixJour1($recupChoixJour1);
-        $this->setChoixJour2($recupChoixJour2);
-        $this->setChoixJour3($recupChoixJour3);
-        $this->setChoixJour12($recupChoixJour12);
-        $this->setChoixJour23($recupChoixJour23);
-        $this->setPass2jours($recupPass2jours);
-        $this->setPass3jours($recupPass3jours);
-        $this->setEmplacementTente($recupEmplacementTente);
-        $this->setTenteNuit1($recupTenteNuit1);
-        $this->setTenteNuit2($recupTenteNuit2);
-        $this->setTenteNuit3($recupTenteNuit3);
-        $this->setTente3Nuits($recupTente3Nuits);
-        $this->setEmplacementVan($recupEmplacementVan);
-        $this->setVanNuit1($recupVanNuit1);
-        $this->setVanNuit2($recupVanNuit2);
-        $this->setVanNuit3($recupVanNuit3);
-        $this->setVan3Nuits($recupVan3Nuits);
-        $this->setEnfantOui($recupEnfantsOui);
-        $this->setEnfantNon($recupEnfantsNon);
-        $this->setCasqueAntiBruit($recupNombreCasquesEnfants);
-        $this->setLuge($recupNombreLugesEte);
-        $this->setTarif($recupTarif);
+        $this->setId($id);
+        $this->setNom($nom);
+        $this->setPrenom($prenom);
+        $this->setMail($email);
+        $this->setNombreResa($places);
+        $this->setTarifReduit($tarifReduit);
+        $this->setPass1jour($pass1jour);
+        $this->setChoixJour1($choixJour1);
+        $this->setChoixJour2($choixJour2);
+        $this->setChoixJour3($choixJour3);
+        $this->setChoixJour12($choixJour12);
+        $this->setChoixJour23($choixJour23);
+        $this->setPass2jours($pass2jours);
+        $this->setPass3jours($pass3jours);
+        $this->setEmplacementTente($emplacementTente);
+        $this->setTenteNuit1($tenteNuit1);
+        $this->setTenteNuit2($tenteNuit2);
+        $this->setTenteNuit3($tenteNuit3);
+        $this->setTente3Nuits($tente3Nuits);
+        $this->setEmplacementVan($emplacementVan);
+        $this->setVanNuit1($vanNuit1);
+        $this->setVanNuit2($vanNuit2);
+        $this->setVanNuit3($vanNuit3);
+        $this->setVan3Nuits($van3Nuits);
+        $this->setEnfantOui($enfantsOui);
+        $this->setEnfantNon($enfantsNon);
+        $this->setCasqueAntiBruit($nombreCasquesEnfants);
+        $this->setLuge($nombreLugesEte);
+        $this->setTarif($tarif);
     }
 
     public function getId(): int
     {
         return $this->_id;
     }
-    public function setId(int|string $recupId)
+    public function setId(int|string $id)
     {
-        if (is_string($recupId) && $recupId === "à créer") {
+        if (is_string($id) && $id === "à créer") {
             $this->_id = $this->CreerNouvelId();
         } else {
-            $this->_id = $recupId;
+            $this->_id = $id;
         }
     }
     public function getNom(): string
     {
         return $this->_nom;
     }
-    public function setNom(string $recupNom)
+    public function setNom(string $nom)
     {
-        $this->_nom = $recupNom;
+        $this->_nom = $nom;
     }
     public function getPrenom(): string
     {
         return $this->_prenom;
     }
-    public function setPrenom(string $recupPrenom)
+    public function setPrenom(string $prenom)
     {
-        $this->_prenom = $recupPrenom;
+        $this->_prenom = $prenom;
     }
     public function getMail(): string
     {
         return $this->_mail;
     }
-    public function setMail(string $recupEmail)
+    public function setMail(string $email)
     {
-        $this->_mail = $recupEmail;
+        $this->_mail = $email;
     }
     public function getNombreResa(): int
     {
         return $this->_nombreResa;
     }
-    public function setNombreResa(int $recupNombrePlaces)
+    public function setNombreResa(int $places)
     {
-        $this->_nombreResa = $recupNombrePlaces;
+        $this->_nombreResa = $places;
     }
 
     public function getTarifReduit(): bool
     {
         return $this->_tarifReduit;
     }
-    public function setTarifReduit(bool $recupTarifReduit)
+    public function setTarifReduit(bool $tarifReduit)
     {
-        $this->_tarifReduit = $recupTarifReduit;
+        $this->_tarifReduit = $tarifReduit;
     }
 
     public function getPass1jour(): string
     {
         return $this->_pass1jour;
     }
-    public function setPass1jour(string $recupPass1jour)
+    public function setPass1jour(string $pass1jour)
     {
-        $this->_pass1jour = $recupPass1jour;
+        $this->_pass1jour = $pass1jour;
     }
 
     public function getChoixJour1(): string
     {
         return $this->_choixJour1;
     }
-    public function setChoixJour1(string $recupChoixJour1)
+    public function setChoixJour1(string $choixJour1)
     {
-        $this->_choixJour1 = $recupChoixJour1;
+        $this->_choixJour1 = $choixJour1;
     }
     public function getChoixJour2(): string
     {
         return $this->_choixJour2;
     }
-    public function setChoixJour2(string $recupChoixJour2)
+    public function setChoixJour2(string $choixJour2)
     {
-        $this->_choixJour2 = $recupChoixJour2;
+        $this->_choixJour2 = $choixJour2;
     }
     public function getChoixJour3(): string
     {
@@ -157,33 +157,33 @@ class Reservation
     {
         return $this->_choixJour12;
     }
-    public function setChoixJour12(string $recupChoixJour12)
+    public function setChoixJour12(string $choixJour12)
     {
-        $this->_choixJour12 = $recupChoixJour12;
+        $this->_choixJour12 = $choixJour12;
     }
     public function getChoixJour23(): string
     {
         return $this->_choixJour23;
     }
-    public function setChoixJour23(string $recupChoixJour23)
+    public function setChoixJour23(string $choixJour23)
     {
-        $this->_choixJour23 = $recupChoixJour23;
+        $this->_choixJour23 = $choixJour23;
     }
     public function getPass2jours(): string
     {
         return $this->_pass2jours;
     }
-    public function setPass2jours(string $recupPass2jours)
+    public function setPass2jours(string $pass2jours)
     {
-        $this->_pass2jours = $recupPass2jours;
+        $this->_pass2jours = $pass2jours;
     }
     public function getPass3jours(): string
     {
         return $this->_pass3jours;
     }
-    public function setPass3jours(string $recupPass3jours)
+    public function setPass3jours(string $pass3jours)
     {
-        $this->_pass3jours = $recupPass3jours;
+        $this->_pass3jours = $pass3jours;
     }
 
 
@@ -196,41 +196,41 @@ class Reservation
     {
         return $this->_emplacementTente;
     }
-    public function setEmplacementTente(string $recupEmplacementTente)
+    public function setEmplacementTente(string $emplacementTente)
     {
-        $this->_emplacementTente = $recupEmplacementTente;
+        $this->_emplacementTente = $emplacementTente;
     }
     public function getTenteNuit1(): string
     {
         return $this->_tenteNuit1;
     }
-    public function setTenteNuit1(string $recupTenteNuit1)
+    public function setTenteNuit1(string $tenteNuit1)
     {
-        $this->_tenteNuit1 = $recupTenteNuit1;
+        $this->_tenteNuit1 = $tenteNuit1;
     }
     public function getTenteNuit2(): string
     {
         return $this->_tenteNuit2;
     }
-    public function setTenteNuit2(string $recupTenteNuit2)
+    public function setTenteNuit2(string $tenteNuit2)
     {
-        $this->_tenteNuit2 = $recupTenteNuit2;
+        $this->_tenteNuit2 = $tenteNuit2;
     }
     public function getTenteNuit3(): string
     {
         return $this->_tenteNuit3;
     }
-    public function setTenteNuit3(string $recupTenteNuit3)
+    public function setTenteNuit3(string $tenteNuit3)
     {
-        $this->_tenteNuit3 = $recupTenteNuit3;
+        $this->_tenteNuit3 = $tenteNuit3;
     }
     public function getTente3Nuits(): string
     {
         return $this->_tente3Nuits;
     }
-    public function setTente3Nuits(string $recupTente3Nuits)
+    public function setTente3Nuits(string $tente3Nuits)
     {
-        $this->_tente3Nuits = $recupTente3Nuits;
+        $this->_tente3Nuits = $tente3Nuits;
     }
 
 
@@ -242,42 +242,42 @@ class Reservation
     {
         return $this->_emplacementVan;
     }
-    public function setEmplacementVan(string $recupEmplacementVan)
+    public function setEmplacementVan(string $emplacementVan)
     {
-        $this->_emplacementVan = $recupEmplacementVan;
+        $this->_emplacementVan = $emplacementVan;
     }
 
     public function getVanNuit1(): string
     {
         return $this->_vanNuit1;
     }
-    public function setVanNuit1(string $recupVanNuit1)
+    public function setVanNuit1(string $vanNuit1)
     {
-        $this->_vanNuit1 = $recupVanNuit1;
+        $this->_vanNuit1 = $vanNuit1;
     }
     public function getVanNuit2(): string
     {
         return $this->_vanNuit2;
     }
-    public function setVanNuit2(string $recupVanNuit2)
+    public function setVanNuit2(string $vanNuit2)
     {
-        $this->_vanNuit2 = $recupVanNuit2;
+        $this->_vanNuit2 = $vanNuit2;
     }
     public function getVanNuit3(): string
     {
         return $this->_vanNuit3;
     }
-    public function setVanNuit3(string $recupVanNuit3)
+    public function setVanNuit3(string $vanNuit3)
     {
-        $this->_vanNuit3 = $recupVanNuit3;
+        $this->_vanNuit3 = $vanNuit3;
     }
     public function getVan3Nuits(): string
     {
         return $this->_van3Nuits;
     }
-    public function setVan3Nuits(string $recupVan3Nuits)
+    public function setVan3Nuits(string $van3Nuits)
     {
-        $this->_van3Nuits = $recupVan3Nuits;
+        $this->_van3Nuits = $van3Nuits;
     }
 
 
@@ -290,17 +290,17 @@ class Reservation
     {
         return $this->_enfantsOui;
     }
-    public function setEnfantOui(string $recupEnfantsOui)
+    public function setEnfantOui(string $enfantsOui)
     {
-        $this->_enfantsOui = $recupEnfantsOui;
+        $this->_enfantsOui = $enfantsOui;
     }
     public function getEnfantNon(): string
     {
         return $this->_enfantsNon;
     }
-    public function setEnfantNon(string $recupEnfantsNon)
+    public function setEnfantNon(string $enfantsNon)
     {
-        $this->_enfantsNon = $recupEnfantsNon;
+        $this->_enfantsNon = $enfantsNon;
     }
 
 
@@ -310,27 +310,27 @@ class Reservation
     {
         return $this->_casqueAntiBruit;
     }
-    public function setCasqueAntiBruit(string $recupNombreCasquesEnfants)
+    public function setCasqueAntiBruit(string $nombreCasquesEnfants)
     {
-        $this->_casqueAntiBruit = $recupNombreCasquesEnfants;
+        $this->_casqueAntiBruit = $nombreCasquesEnfants;
     }
 
     public function getLuge(): string
     {
         return $this->_luge;
     }
-    public function setLuge(string $recupNombreLugesEte)
+    public function setLuge(string $nombreLugesEte)
     {
-        $this->_luge = $recupNombreLugesEte;
+        $this->_luge = $nombreLugesEte;
     }
 
     public function getTarif(): string
     {
         return $this->_tarif;
     }
-    public function setTarif(string $recupTarif)
+    public function setTarif(string $tarif)
     {
-        $this->_tarif = $recupTarif;
+        $this->_tarif = $tarif;
     }
 
     private function CreerNouvelId()
@@ -339,17 +339,17 @@ class Reservation
         $clients = $Database->getAllClients();
 
 
-        $recupIds = [];
+        $ids = [];
 
         foreach ($clients as $client) {
-            $recupIds[] = $client->getId();
+            $ids[] = $client->getId();
         }
 
 
         $i = 1;
         $unique = false;
         while ($unique === false) {
-            if (in_array($i, $recupIds)) {
+            if (in_array($i, $ids)) {
                 $i++;
             } else {
                 $unique = true;
