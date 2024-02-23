@@ -104,35 +104,37 @@ if (
     header('location:/../index.php?erreur=' . ERREUR_CHAMP_VIDE);
     die;
 }
-// $donnee = new Donnee(
-//     $recupNombrePlaces,
-//     $recupTarifReduit,
-//     $recupPass1jour,
-//     $recupChoixJour1,
-//     $recupChoixJour2,
-//     $recupChoixJour3,
-//     $recupChoixJour12,
-//     $recupChoixJour23,
-//     $recupPass2jours,
-//     $recupPass3jours,
 
-//     $recupPass2jour,
-//     $recupPass3jour,
-//     $recupVanNuit1,
-//     $recupVanNuit2,
-//     $recupVanNuit3,
-//     $recupVan3Nuits,
-//     $recupTenteNuit1,
-//     $recupTenteNuit2,
-//     $recupTenteNuit3,
-//     $recupTente3Nuits,
-//     $recupEnfantsOui,
-//     $recupEnfantsNon,
-//     $recupNombreCasquesEnfants,
-//     $recupNombreLugesEte
-// );
-$Reservation = new Reservation();
-if ($Database->savereservations($réservation)) {
+$client = new Client(
+    $recupNombrePlaces,
+    $recupTarifReduit,
+    $recupPass1jour,
+    $recupChoixJour1,
+    $recupChoixJour2,
+    $recupChoixJour3,
+    $recupChoixJour12,
+    $recupChoixJour23,
+    $recupPass2jours,
+    $recupPass3jours,
+
+    $recupPass2jour,
+    $recupPass3jour,
+    $recupVanNuit1,
+    $recupVanNuit2,
+    $recupVanNuit3,
+    $recupVan3Nuits,
+    $recupTenteNuit1,
+    $recupTenteNuit2,
+    $recupTenteNuit3,
+    $recupTente3Nuits,
+    $recupEnfantsOui,
+    $recupEnfantsNon,
+    $recupNombreCasquesEnfants,
+    $recupNombreLugesEte
+);
+$Reservation = new Reservation($reservation[0], $reservation[1], $reservation[2], $reservation[3], $reservation[4], $reservation[5], $reservation[6], $reservation[7], $reservation[8], $reservation[9], $reservation[10], $reservation[11], $reservation[12], $reservation[13], $reservation[14], $reservation[15], $reservation[16], $reservation[17], $reservation[18], $reservation[19], $reservation[20], $reservation[21], $reservation[22], $reservation[23], $reservation[24], $reservation[25], $reservation[26], $reservation[27], $reservation[28], $reservation[29]);
+if ($Database->savereservations($reservations)) {
+
     header('location:/../confirmation.php');
 } else {
     header('location:/../index.php?erreur=' . ERREUR_ENREGISTREMENT);
