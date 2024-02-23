@@ -1,7 +1,7 @@
 <?php
 session_start();
 // Vérification du mot de passe
-$expected_password = 'Festival2024!'; // Remplacez par votre mot de passe souhaité
+$expected_password = 'Festival2024!'; // mot de passe souhaité
 
 if (isset($_POST['password']) && $_POST['password'] === $expected_password) {
     header('location:tableau-de-bord.php');
@@ -44,7 +44,7 @@ if (isset($_GET['erreur'])) {
         <div id="message"></div>
         <?php if ($echec) { ?>
             <div class="message echec">
-                Mot de passe ou email invalide.
+                Mot de passe invalide.
             </div>
         <?php } ?>
 

@@ -3,6 +3,7 @@ require 'config.php';
 require 'classes/Client.php';
 require 'classes/Database.php';
 require 'classes/Reservation.php';
+require 'classes/Donnee.php';
 // Les éléments à cocher
 
 //récupération
@@ -47,6 +48,8 @@ $recupEmail = $_POST['email'];
 $recupTelephone = $_POST['telephone'];
 $recupAdressePostale = $_POST['adressePostale'];
 
+$recupPassword = $_POST['password'];
+
 
 ///
 if (
@@ -54,11 +57,12 @@ if (
     && isset($_POST['tenteNuit3']) && isset($_POST['vanNuit1']) && isset($_POST['vanNuit2']) && isset($_POST['van3Nuits']) && isset($_POST['enfantsOui'])
     && isset($_POST['enfantsNon']) && isset($_POST['nombreCasquesEnfants']) && isset($_POST['NombreLugesEte']) && isset($_POST['nom'])
     && isset($_POST['prenom']) && isset($_POST['email']) && isset($_POST['telephone'])
+    && isset($_POST['password'])
     && isset($_POST['adressePostale']) && !empty($_POST['nombrePlaces']) && !empty($_POST['tarifReduit']) && !empty($_POST['passSelection']) && !empty($_POST['tenteNuit1']) && !empty($_POST['tenteNuit2'])
     && !empty($_POST['tenteNuit3']) && !empty($_POST['vanNuit1']) && !empty($_POST['vanNuit2']) && !empty($_POST['van3Nuits']) && !empty($_POST['enfantsOui'])
     && !empty($_POST['enfantsNon']) && !empty($_POST['nombreCasquesEnfants']) && !empty($_POST['NombreLugesEte']) && !empty($_POST['nom'])
     && !empty($_POST['prenom']) && !empty($_POST['email']) && !empty($_POST['telephone'])
-    && !empty($_POST['adressePostale'])
+    && !empty($_POST['adressePostale']) && !empty($_POST['password'])
 ) {
     $nom = htmlentities($_POST['nom']);
     $prenom = htmlentities($_POST['prenom']);
@@ -84,48 +88,48 @@ if (
 
 
 
-    $client = new Client($recupNom, $$recupPrenom, $recupTelephone, $recupEmail, $recupAdressePostale);
+    $client = new Client($recupNom, $recupPrenom, $recupTelephone, $recupEmail, $recupAdressePostale);
     $Database = new Database();
     if ($Database->saveClient($client)) {
         header('location:/../confirmation.php');
     } else {
         header('location:/../index.php?erreur=' . ERREUR_ENREGISTREMENT);
     }
-
-    $donnee = new Donnee(
-        $recupNombrePlaces,
-        $$recupTarifReduit,
-        $recupPass1jour,
-        $recupChoixJour1,
-        $recupChoixJour2,
-        $recupChoixJour3,
-        $recupChoixJour12,
-        $recupChoixJour23,
-        $recupPass2jours,
-        $recupPass3jours,
-        $recupPass1jour,
-        $recupPass2jour,
-        $recupPass3jour,
-        $recupVanNuit1,
-        $recupVanNuit2,
-        $recupVanNuit3,
-        $recupVan3Nuits,
-        $recupTenteNuit1,
-        $recupTenteNuit2,
-        $recupTenteNuit3,
-        $recupTente3Nuits,
-        $recupEnfantsOui,
-        $recupEnfantsNon,
-        $recupNombreCasquesEnfants,
-        $recupNombreLugesEte
-    );
-    $Reservation = new Reservation();
-    if ($Database->saveClient($client)) {
-        header('location:/../confirmation.php');
-    } else {
-        header('location:/../index.php?erreur=' . ERREUR_ENREGISTREMENT);
-    }
+    var_dump($client);
 } else {
     header('location:/../index.php?erreur=' . ERREUR_CHAMP_VIDE);
     die;
+}
+$donnee = new Donnee(
+    $recupNombrePlaces,
+    $recupTarifReduit,
+    $recupPass1jour,
+    $recupChoixJour1,
+    $recupChoixJour2,
+    $recupChoixJour3,
+    $recupChoixJour12,
+    $recupChoixJour23,
+    $recupPass2jours,
+    $recupPass3jours,
+
+    $recupPass2jour,
+    $recupPass3jour,
+    $recupVanNuit1,
+    $recupVanNuit2,
+    $recupVanNuit3,
+    $recupVan3Nuits,
+    $recupTenteNuit1,
+    $recupTenteNuit2,
+    $recupTenteNuit3,
+    $recupTente3Nuits,
+    $recupEnfantsOui,
+    $recupEnfantsNon,
+    $recupNombreCasquesEnfants,
+    $recupNombreLugesEte
+);
+$Reservation = new Reservation();
+if ($Database->savereservations($donnee)) {
+    header('location:/../confirmation.php');
+} else {
+    header('location:/../index.php?erreur=' . ERREUR_ENREGISTREMENT);
 }

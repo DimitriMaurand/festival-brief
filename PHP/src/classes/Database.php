@@ -9,16 +9,7 @@ final class Database
         $this->_DB_Client = __DIR__ . "/../csv/clients.csv";
     }
 
-    public function saveClient(Client $client): bool
-    {
-        $fichier = fopen($this->_DB, 'ab');
 
-        $retour = fputcsv($fichier, $client->getObjectToArray());
-
-        fclose($fichier);
-
-        return $retour;
-    }
 
     public function getAllClients(): array
     {
