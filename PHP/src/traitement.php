@@ -7,40 +7,40 @@ require 'classes/Donnee.php';
 // Les éléments à cocher
 
 //récupération
-// $recupNombrePlaces = $_POST['nombrePlaces'];
-// $recupTarifReduit = $_POST['tarifReduit'];
+// $NombrePlaces = $_POST['nombrePlaces'];
+// $TarifReduit = $_POST['tarifReduit'];
 
-// $recupPass1jour = $_POST['pass1jour'];
+// $Pass1jour = $_POST['pass1jour'];
 
-// $recupChoixJour1 = $_POST['choixJour1'];
-// $recupChoixJour2 = $_POST['choixJour2'];
-// $recupChoixJour3 = $_POST['choixJour3'];
+// $ChoixJour1 = $_POST['choixJour1'];
+// $ChoixJour2 = $_POST['choixJour2'];
+// $ChoixJour3 = $_POST['choixJour3'];
 
-// $recupChoixJour12 = $_POST['choixJour12'];
-// $recupChoixJour23 = $_POST['choixJour23'];
+// $ChoixJour12 = $_POST['choixJour12'];
+// $ChoixJour23 = $_POST['choixJour23'];
 
-// $recupPass2jours = $_POST['pass2jours'];
-// $recupPass3jours = $_POST['pass3jours'];
+// $Pass2jours = $_POST['pass2jours'];
+// $Pass3jours = $_POST['pass3jours'];
 
-// $recupPass1jour = $_POST['pass1jour'];
-// $recupPass2jour = $_POST['pass2jour'];
-// $recupPass3jour = $_POST['pass3jour'];
+// $Pass1jour = $_POST['pass1jour'];
+// $Pass2jour = $_POST['pass2jour'];
+// $Pass3jour = $_POST['pass3jour'];
 
-// $recupTenteNuit1 = $_POST['tenteNuit1'];
-// $recupTenteNuit2 = $_POST['tenteNuit2'];
-// $recupTenteNuit3 = $_POST['tenteNuit3'];
-// $recupTente3Nuits = $_POST['tente3Nuits'];
+// $TenteNuit1 = $_POST['tenteNuit1'];
+// $TenteNuit2 = $_POST['tenteNuit2'];
+// $TenteNuit3 = $_POST['tenteNuit3'];
+// $Tente3Nuits = $_POST['tente3Nuits'];
 
-// $recupVanNuit1 = $_POST['vanNuit1'];
-// $recupVanNuit2 = $_POST['vanNuit2'];
-// $recupVanNuit3 = $_POST['vanNuit3'];
-// $recupVan3Nuits = $_POST['van3Nuits'];
+// $VanNuit1 = $_POST['vanNuit1'];
+// $VanNuit2 = $_POST['vanNuit2'];
+// $VanNuit3 = $_POST['vanNuit3'];
+// $Van3Nuits = $_POST['van3Nuits'];
 
-// $recupEnfantsOui = $_POST['enfantsOui'];
-// $recupEnfantsNon = $_POST['enfantsNon'];
+// $EnfantsOui = $_POST['enfantsOui'];
+// $EnfantsNon = $_POST['enfantsNon'];
 
-// $recupNombreCasquesEnfants = $_POST['nombreCasquesEnfants'];
-// $recupNombreLugesEte = $_POST['NombreLugesEte'];
+// $NombreCasquesEnfants = $_POST['nombreCasquesEnfants'];
+// $NombreLugesEte = $_POST['NombreLugesEte'];
 
 //&& isset($_POST['tarifReduit']) && isset($_POST['passSelection']) && isset($_POST['tenteNuit1']) && isset($_POST['tenteNuit2'])
 // && isset($_POST['tenteNuit3']) && isset($_POST['vanNuit1']) && isset($_POST['vanNuit2']) && isset($_POST['van3Nuits']) && isset($_POST['enfantsOui'])
@@ -64,33 +64,86 @@ if (
     $AdressePostale = htmlentities($_POST['adressePostale']);
     $Telephone = htmlentities($_POST['telephone']);
 
+
+    //pass 1 jour
     if (isset($_POST['pass1jour'])) {
-        $typePass = $_POST['choixJour1'];
-    } elseif (isset($_POST['choixJour2'])) {
-        $typePass = $_POST['choixJour2'];
-    } else {
-        $typePass = $_POST['choixJour3'];
+        if (isset($_POST['choixJour1'])) {
+            $typePass = 'journee_01_07';
+        } elseif (isset($_POST['choixJour2'])) {
+            $typePass = 'journee_02_07';
+        } else {
+            $typePass = 'journee_03_07';
+        }
     }
 
+    //choix 2 jours
     if (isset($_POST['choixJour12'])) {
-        $typePass = $_POST['choixJour12'];
-    } else {
-        $typePass = $_POST['choixJour23'];
+        $typePass = 'journees_01_07-02_07';
+    }
+    if (isset($_POST['choixJour23'])) {
+        $typePass = 'journees_02_07-03_07';
     }
 
+    //pass plusieurs jours
     if (isset($_POST['pass2jours'])) {
-        $typePass = $_POST['pass2jours'];
-    } else {
-        $typePass = $_POST['pass3jours'];
+        $typePass = 'pass_2_jours';
+    }
+    if (isset($_POST['pass3jours'])) {
+        $typePass = 'pass_3_jours';
     }
 
+    //tarif réduit
     if (isset($_POST['tarifReduit'])) {
-        $typePass = $_POST['pass2jour'];
-    } elseif (isset($_POST['pass2jour'])) {
-        $typePass = $_POST['pass2jour'];
-    } else {
-        $typePass = $_POST['pass3jour'];
+        if (isset($_POST['pass1jour'])) {
+            $typePass = 'réduit_pass_1jour';
+        } elseif (isset($_POST['pass2jour'])) {
+            $typePass = 'réduit_pass_2jour';
+        } else {
+            $typePass = 'réduit_pass_3jour';
+        }
     }
+
+    //option
+
+    //tente
+    if (isset($_POST['tenteNuit1'])) {
+        $tente = 'tente_Nuit_1';
+    }
+
+    if (isset($_POST['tenteNuit2'])) {
+        $tente = 'tente_Nuit_2';
+    }
+    if (isset($_POST['tente_Nuit_3'])) {
+        $tente = 'tente_Nuit_3';
+    }
+
+    //van
+    if (isset($_POST['vanNuit1'])) {
+        $Van = 'vanNuit1';
+    }
+    if (isset($_POST['vanNuit2'])) {
+        $Van = 'van_Nuit_2';
+    }
+    if (isset($_POST['vanNuit3'])) {
+        $Van = 'van_Nuit_3';
+    }
+    if (isset($_POST['van3Nuits'])) {
+        $Van = 'van_3_Nuits';
+    }
+
+    //casque
+    if (isset($_POST['enfantsOui'])) {
+        if (isset($_POST['nombreCasquesEnfants'])) {
+            $enfant = 'nombreCasquesEnfants';
+        }
+    }
+
+    if (isset($_POST['enfantsOui'])) {
+        if (isset($_POST['NombreLugesEte'])) {
+            $enfant = 'NombreLugesEte';
+        }
+    }
+    //coordonnée
 
 
     if (filter_var($_POST['mail'], FILTER_VALIDATE_EMAIL)) {
@@ -114,7 +167,7 @@ if (
 
 
 
-    $client = new Client($recupNom, $recupPrenom, $recupTelephone, $recupEmail, $recupAdressePostale);
+    $client = new Client($Nom, $Prenom, $Telephone, $Email, $AdressePostale);
     $Database = new Database();
     if ($Database->saveClient($client)) {
         header('location:/../confirmation.php');
@@ -123,31 +176,30 @@ if (
     }
     var_dump($client);
     $client = new Client(
-        $recupNombrePlaces,
-        $recupTarifReduit,
-        $recupPass1jour,
-        $recupChoixJour1,
-        $recupChoixJour2,
-        $recupChoixJour3,
-        $recupChoixJour12,
-        $recupChoixJour23,
-        $recupPass2jours,
-        $recupPass3jours,
+        $NombrePlaces,
+        $TarifReduit,
 
-        $recupPass2jour,
-        $recupPass3jour,
-        $recupVanNuit1,
-        $recupVanNuit2,
-        $recupVanNuit3,
-        $recupVan3Nuits,
-        $recupTenteNuit1,
-        $recupTenteNuit2,
-        $recupTenteNuit3,
-        $recupTente3Nuits,
-        $recupEnfantsOui,
-        $recupEnfantsNon,
-        $recupNombreCasquesEnfants,
-        $recupNombreLugesEte
+        $typePass,
+
+        $ChoixJour12,
+        $ChoixJour23,
+        $Pass2jours,
+        $Pass3jours,
+
+        $Pass2jour,
+        $Pass3jour,
+        $VanNuit1,
+        $VanNuit2,
+        $VanNuit3,
+        $Van3Nuits,
+        $TenteNuit1,
+        $TenteNuit2,
+        $TenteNuit3,
+        $Tente3Nuits,
+        $EnfantsOui,
+        $EnfantsNon,
+        $NombreCasquesEnfants,
+        $NombreLugesEte
     );
     $Reservation = new Reservation($reservation, $reservation, $reservation, $reservation, $reservation, $reservation, $reservation, $reservation, $reservation, $reservation, $reservation, $reservation, $reservation, $reservation, $reservation, $reservation, $reservation, $reservation, $reservation, $reservation, $reservation, $reservation, $reservation, $reservation, $reservation, $reservation, $reservation, $reservation, $reservation, $reservation);
     if ($Database->savereservations($reservations)) {
