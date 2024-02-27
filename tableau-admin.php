@@ -1,6 +1,6 @@
 <?php
 session_start();
-require 'src/classes/Client.php';
+// require 'src/classes/Client.php';
 require 'src/classes/Database.php';
 
 if (!isset($_SESSION['connecté']) && empty($_SESSION['user'])) {
