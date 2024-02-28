@@ -2,8 +2,9 @@
 require 'config.php';
 require 'classes/Client.php';
 require 'classes/Database.php';
-require 'classes/Reservation.php';
-require 'classes/Donnee.php';
+// require 'classes/Reservation.php';
+// require 'classes/Donnee.php';
+echo    "coucou";
 // Les éléments à cocher
 
 //récupération
@@ -52,103 +53,165 @@ require 'classes/Donnee.php';
 
 ///
 if (
-    isset($_POST['nombrePlaces'])  && isset($_POST['nom']) && isset($_POST['prenom']) && isset($_POST['email']) && isset($_POST['telephone']) && isset($_POST['password']) && isset($_POST['adressePostale']) &&
-    !empty($_POST['nombrePlaces']) && !empty($_POST['nom']) && !empty($_POST['prenom']) && !empty($_POST['email']) && !empty($_POST['telephone']) && !empty($_POST['password']) && !empty($_POST['adressePostale'])
+    isset($_POST['nombrePlaces'])  && isset($_POST['nom'])
+    && isset($_POST['prenom']) && isset($_POST['email']) && isset($_POST['telephone'])
+
+    && isset($_POST['adressePostale']) && !empty($_POST['nombrePlaces']) && !empty($_POST['nom'])
+    && !empty($_POST['prenom']) && !empty($_POST['email']) && !empty($_POST['telephone'])
+    && !empty($_POST['adressePostale'])
 ) {
     $nom = htmlentities($_POST['nom']);
     $prenom = htmlentities($_POST['prenom']);
-    $AdressePostale = htmlentities($_POST['adressePostale']);
-    $Telephone = htmlentities($_POST['telephone']);
+    $adressePostale = htmlentities($_POST['adressePostale']);
+    $telephone = htmlentities($_POST['telephone']);
+    $nombreResa = htmlentities($_POST['nombrePlaces']);
 
+    //pass 1 jour
     if (isset($_POST['pass1jour'])) {
-        $typePass = $_POST['choixJour1'];
-    } elseif (isset($_POST['choixJour2'])) {
-        $typePass = $_POST['choixJour2'];
-    } else {
-        $typePass = $_POST['choixJour3'];
+        if (isset($_POST['choixJour1'])) {
+            $typePass = 'journee_01_07';
+        } elseif (isset($_POST['choixJour2'])) {
+            $typePass = 'journee_02_07';
+        } else {
+            $typePass = 'journee_03_07';
+        }
     }
 
+    //choix 2 jours
     if (isset($_POST['choixJour12'])) {
-        $typePass = $_POST['choixJour12'];
-    } else {
-        $typePass = $_POST['choixJour23'];
+        $typePass = 'journees_01_07_02_07';
+    }
+    if (isset($_POST['choixJour23'])) {
+        $typePass = 'journees_02_07_03_07';
     }
 
+    //pass plusieurs jours
     if (isset($_POST['pass2jours'])) {
-        $typePass = $_POST['pass2jours'];
-    } else {
-        $typePass = $_POST['pass3jours'];
+        $typePass = 'pass_2_jours';
+    }
+    if (isset($_POST['pass3jours'])) {
+        $typePass = 'pass_3_jours';
     }
 
+    //tarif réduit
     if (isset($_POST['tarifReduit'])) {
-        $typePass = $_POST['pass2jour'];
-    } elseif (isset($_POST['pass2jour'])) {
-        $typePass = $_POST['pass2jour'];
-    } else {
-        $typePass = $_POST['pass3jour'];
+        if (isset($_POST['pass1jour'])) {
+            $typePass = 'réduit_pass_1jour';
+        } elseif (isset($_POST['pass2jour'])) {
+            $typePass = 'réduit_pass_2jour';
+        } else {
+            $typePass = 'réduit_pass_3jour';
+        }
     }
 
+    //option
 
-    if (filter_var($_POST['mail'], FILTER_VALIDATE_EMAIL)) {
-        $mail = htmlentities($_POST['mail']);
+    //tente
+    if (isset($_POST['tenteNuit1']) && (!empty($_POST['tenteNuit1']))) {
+        $tente = 'tente_Nuit_1';
+    } else {
+        $tente = 0;
+    }
+
+    if (isset($_POST['tenteNuit2']) && (!empty($_POST['tenteNuit2']))) {
+        $tente = 'tente_Nuit_2';
+    } else {
+        $tente = 0;
+    }
+
+    if (isset($_POST['tenteNuit3']) && (!empty($_POST['tenteNuit3']))) {
+        $tente = 'tente_Nuit_3';
+    } else {
+        $tente = 0;
+    }
+
+    if (isset($_POST['tente3Nuits']) && (!empty($_POST['tente3Nuits']))) {
+        $tente = 'tente3Nuits';
+    }
+    var_dump($tente);
+
+    //van
+    if (isset($_POST['vanNuit1']) && (!empty($_POST['vanNuit1']))) {
+        $Van = 'vanNuit1';
+    } else {
+        $Van = 0;
+    }
+
+    if (isset($_POST['vanNuit2']) && (!empty($_POST['vanNuit2']))) {
+        $Van = 'van_Nuit_2';
+    } else {
+        $Van = 0;
+    }
+
+    if (isset($_POST['vanNuit3']) && (!empty($_POST['vanNuit3']))) {
+        $Van = 'van_Nuit_3';
+    } else {
+        $Van = 0;
+    }
+
+    if (isset($_POST['van3Nuits']) && (!empty($_POST['van3Nuits']))) {
+        $Van = 'van_3_Nuits';
+    } else {
+        $Van = 0;
+    }
+
+    var_dump($Van);
+
+    //casque
+    if (isset($_POST['enfantsOui'])) {
+        if (isset($_POST['nombreCasquesEnfants']) && (!empty($_POST['nombreCasquesEnfants']))) {
+            $casque = (int) $_POST['nombreCasquesEnfants'];
+        } else {
+            $casque = 0;
+        }
+    }
+
+    if (isset($_POST['enfantsOui']) && (!empty($_POST['nombreCasquesEnfants']))) {
+        if (isset($_POST['NombreLugesEte'])) {
+            $luge = (int) $_POST['NombreLugesEte'];
+        } else {
+            $luge = 0;
+        }
+    }
+    var_dump((int) $_POST['NombreLugesEte']);
+
+    //coordonnée
+
+
+    if (filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
+        $email = htmlentities($_POST['email']);
     } else {
         header('location:/../index.php?erreur=' . ERREUR_EMAIL);
         die;
     }
 
-    if (isset($_POST['pass2jour']) || isset($_POST['pass3jour']) || isset($_POST['pass1jour']) && isset($_POST['choixJour1']) || isset($_POST['choixJour2']) || isset($_POST['choixJour3']) && !empty($_POST['pass2jour']) || !empty($_POST['pass3jour']) || !empty($_POST['pass1jour']) && !empty($_POST['choixJour1']) || !empty($_POST['choixJour2']) || !empty($_POST['choixJour3'])) {
-        header('location:/../confirmation.php');
-    } else {
-        header('location:/../index.php?erreur=' . ERREUR_ENREGISTREMENT);
-    }
-
-
-
-    if (isset($_POST['nombrePlaces']) && isset($_POST['tarifReduit']) && !empty($_POST['nombrePlaces']) && !empty($_POST['tarifReduit'])) {
-        header('location:/../confirmation.php');
-    } else {
-        header('location:/../index.php?erreur=' . ERREUR_ENREGISTREMENT);
-    }
-
-    // if (
-    //     isset($_POST['tenteNuit1']) && isset($_POST['tenteNuit2'])
-    //     && isset($_POST['tenteNuit3']) && !empty($_POST['tenteNuit1']) && !empty($_POST['tenteNuit2'])
-    //     && !empty($_POST['tenteNuit3'])) {
-    //     # code...
-    // }
-
-    // if (isset($_POST['vanNuit1']) && isset($_POST['vanNuit2']) && isset($_POST['van3Nuits']) && !empty($_POST['vanNuit1']) && !empty($_POST['vanNuit2']) && !empty($_POST['van3Nuits'])) {
-    //     # code...
-    // }
-
-    // if (isset($_POST['enfantsOui']) && isset($_POST['enfantsNon']) && !empty($_POST['enfantsOui']) && !empty($_POST['enfantsNon'])) {
-    //     # code...
+    // if (strlen($_POST['password']) >= 8) {
+    //     if ($_POST['password'] === $_POST['password2']) {
+    //         $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
+    //     } else {
+    //         header('location:/../index.php?erreur=' . ERREUR_PASSWORD_IDENTIQUE);
+    //         die;
+    //     }
+    // } else {
+    //     header('location:/../index.php?erreur=' . ERREUR_PASSWORD_LENGTH);
+    //     die;
     // }
 
 
 
-    // if (isset($_POST['nombreCasquesEnfants']) && isset($_POST['NombreLugesEte']) && !empty($_POST['nombreCasquesEnfants']) && !empty($_POST['NombreLugesEte'])) {
-    //     # code...
-    // }
-
-
-    if (isset($_POST['password']) && !empty($_POST['password'])) {
-        if (strlen($_POST['password']) >= 8) {
-            if ($_POST['password'] === $_POST['password2']) {
-                $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
-            } else {
-                header('location:/../index.php?erreur=' . ERREUR_PASSWORD_IDENTIQUE);
-                die;
-            }
-        } else {
-            header('location:/../index.php?erreur=' . ERREUR_PASSWORD_LENGTH);
-            die;
-        }
-    }
-
-
-
-    $client = new Client($Nom, $Prenom, $Telephone, $Email, $AdressePostale);
+    $client = new Client(
+        $nom,
+        $prenom,
+        $telephone,
+        $email,
+        $adressePostale,
+        $nombreResa,
+        $typePass,
+        $tente,
+        $Van,
+        $casque,
+        $luge,
+    );
     $Database = new Database();
     if ($Database->saveClient($client)) {
         header('location:/../confirmation.php');
@@ -156,38 +219,14 @@ if (
         header('location:/../index.php?erreur=' . ERREUR_ENREGISTREMENT);
     }
     var_dump($client);
-    $client = new Client(
-        $NombrePlaces,
-        $TarifReduit,
-        $Pass1jour,
-        $ChoixJour1,
-        $ChoixJour2,
-        $ChoixJour3,
-        $ChoixJour12,
-        $ChoixJour23,
-        $Pass2jours,
-        $Pass3jours,
 
-        $Pass2jour,
-        $Pass3jour,
-        $VanNuit1,
-        $VanNuit2,
-        $VanNuit3,
-        $Van3Nuits,
-        $TenteNuit1,
-        $TenteNuit2,
-        $TenteNuit3,
-        $Tente3Nuits,
-        $EnfantsOui,
-        $EnfantsNon,
-        $NombreCasquesEnfants,
-        $NombreLugesEte
-    );
-    $Reservation = new Reservation($reservation, $reservation, $reservation, $reservation, $reservation, $reservation, $reservation, $reservation, $reservation, $reservation, $reservation, $reservation, $reservation, $reservation, $reservation, $reservation, $reservation, $reservation, $reservation, $reservation, $reservation, $reservation, $reservation, $reservation, $reservation, $reservation, $reservation, $reservation, $reservation, $reservation);
-    if ($Database->savereservations($reservations)) {
+    // $Reservation = new Reservation($reservation, $reservation, $reservation, $reservation, $reservation, $reservation, $reservation, $reservation, $reservation, $reservation, $reservation, $reservation, $reservation, $reservation, $reservation, $reservation, $reservation, $reservation, $reservation, $reservation, $reservation, $reservation, $reservation, $reservation, $reservation, $reservation, $reservation, $reservation, $reservation, $reservation);
+    // if ($Database->savereservations($reservations)) {
 
-        header('location:/../confirmation.php');
-    } else {
-        header('location:/../index.php?erreur=' . ERREUR_ENREGISTREMENT);
-    }
+    //     header('location:/../confirmation.php');
+    // } else {
+    //     header('location:/../index.php?erreur=' . ERREUR_ENREGISTREMENT);
+    // }
+} else {
+    echo "erreur";
 }
