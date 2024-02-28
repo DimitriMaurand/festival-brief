@@ -41,6 +41,9 @@ checkbox.addEventListener('change', () => {
     } else {
         divTarifReduit.style.display = 'none';
 
+        // choixJour1.checked = false;
+        // choixJour2.checked = false;
+        // choixJour3.checked = false;
     }
 });
 
@@ -53,6 +56,8 @@ checkboxEnfantsOui.addEventListener('change', function () {
 
     } else {
         divEnfant.style.display = 'none';
+        // nombreCasquesEnfants.checked = 0;
+        // NombreLugesEte.checked = 0;
     }
 });
 

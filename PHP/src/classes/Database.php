@@ -15,23 +15,25 @@ final class Database
         $clients = [];
 
         while (($client = fgetcsv($connexion, 500, ",")) !== FALSE) {
-            $clients[] = new Client(
-                $client[1],
-                $client[2],
-                $client[3],
-                $client[4],
-                $client[5],
-                $client[6],
-                $client[7],
-                $client[8],
-                $client[9],
-                $client[10],
+            if (count($client) >= 11) {
+                $clients[] = new Client(
+                    $client[1],
+                    $client[2],
+                    $client[3],
+                    $client[4],
+                    $client[5],
+                    $client[6],
+                    $client[7],
+                    $client[8],
+                    $client[9],
+                    $client[10],
 
-                $client[0]
-            );
+                    $client[0]
+                );
+            }
+            fclose($connexion);
+            return $clients;
         }
-        fclose($connexion);
-        return $clients;
     }
 
     public function getClientById(int $id): Client|bool
