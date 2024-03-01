@@ -1,7 +1,7 @@
 <?php
 session_start();
-require 'classes/Database.php';
-// require 'classes/client.php';
+require_once 'classes/Database.php';
+// require_once 'classes/client.php';
 $Database = new Database();
 
 // Formulaire de connexion soumis :

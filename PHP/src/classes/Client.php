@@ -34,8 +34,8 @@ class Client
         string $typePass,
         string $tente,
         string $Van,
-        int  $casque,
-        int $luge,
+        ?int  $casque,
+        ?int $luge,
         int|string $id = "à créer"
     ) {
         $this->setNom($nom);
@@ -197,37 +197,37 @@ class Client
     // }
 
 
-    public function getCasque(): int
+    public function getCasque(): ?int
     {
         return $this->_casque;
     }
-    public function setCasque(int $_casque): void
+    public function setCasque(?int $_casque): void
     {
         $this->_casque = $_casque;
     }
     //*/
-    public function getLuge()
-    {
-
-        if (is_string($this->_luge) || is_int($this->_luge)) {
-            return $this->_luge;
-        }
-    }
-    public function setLuge($luge): void
-    {
-        if (is_string($luge) || is_int($luge)) {
-            $this->_luge = $luge;
-        }
-    }
-
-    // public function getLuge(): string
+    // public function getLuge()
     // {
-    //     return $this->_luge;
+
+    //     if (is_string($this->_luge) || is_int($this->_luge)) {
+    //         return $this->_luge;
+    //     }
     // }
-    // public function setLuge(string $_luge): void
+    // public function setLuge($luge): void
     // {
-    //     $this->_luge = $_luge;
+    //     if (is_string($luge) || is_int($luge)) {
+    //         $this->_luge = $luge;
+    //     }
     // }
+
+    public function getLuge(): ?int
+    {
+        return $this->_luge;
+    }
+    public function setLuge(?int $_luge): void
+    {
+        $this->_luge = $_luge;
+    }
 
     //*/
     private function CreerNouvelId()

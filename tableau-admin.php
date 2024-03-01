@@ -1,34 +1,34 @@
-<?php
-session_start();
-// require 'src/classes/Client.php';
-require 'src/classes/Database.php';
+<!-- <?php
+        session_start();
+        require_once 'src/classes/Client.php';
+        require_once 'src/classes/Database.php';
 
-if (!isset($_SESSION['connecté']) && empty($_SESSION['user'])) {
-    // abort
-    header('location: connexion.php');
-    die;
-}
-$user = unserialize($_SESSION['user']);
+        if (!isset($_SESSION['connecté']) && empty($_SESSION['user'])) {
+            // abort
+            header('location: connexion.php');
+            die;
+        }
+        $user = unserialize($_SESSION['user']);
 
-if (!$client->isAdmin()) {
-    header('location: tableau-de-bord.php');
-    die;
-}
+        if (!$client->isAdmin()) {
+            header('location: tableau-de-bord.php');
+            die;
+        }
 
-if (isset($_GET['section'])) {
-    switch ($_GET['section']) {
-        case 'utilisateurs':
-            $section = 'utilisateurs';
-            break 1;
-        default:
+        if (isset($_GET['section'])) {
+            switch ($_GET['section']) {
+                case 'utilisateurs':
+                    $section = 'utilisateurs';
+                    break 1;
+                default:
+                    $section = null;
+                    break 1;
+            }
+        } else {
             $section = null;
-            break 1;
-    }
-} else {
-    $section = null;
-}
-include 'includes/header.php';
-?>
+        }
+        include 'includes/header.php';
+        ?>
 <main>
     <?php include 'includes/colonne-admin.php'; ?>
     <div class="content">
@@ -38,4 +38,4 @@ include 'includes/header.php';
         include 'includes/section-utilisateurs.php';
         ?>
     </div>
-</main>
+</main> -->

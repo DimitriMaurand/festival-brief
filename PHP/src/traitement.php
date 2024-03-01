@@ -1,7 +1,7 @@
 <?php
-require 'config.php';
-require 'classes/Client.php';
-require 'classes/Database.php';
+require_once 'config.php';
+require_once 'classes/Client.php';
+require_once 'classes/Database.php';
 // require 'classes/Reservation.php';
 // require 'classes/Donnee.php';
 echo    "coucou";

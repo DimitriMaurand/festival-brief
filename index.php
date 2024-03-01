@@ -160,13 +160,13 @@ if (isset($_GET['erreur'])) {
         <section class="cadre">
           <h4>Voulez-vous louer un casque antibruit pour enfants* (2€ / casque) ?</h4>
           <label for="nombreCasquesEnfants">Nombre de casques souhaités :</label>
-          <input class="champ" type="number" name="nombreCasquesEnfants" id="nombreCasquesEnfants">
+          <input class="champ" type="number" name="nombreCasquesEnfants" id="nombreCasquesEnfants" value="0">
           <p>*Dans la limite des stocks disponibles.</p>
         </section>
         <div class="cadre">
           <h3>Profitez de descentes en luge d'été à tarifs avantageux !</h3>
           <label for="NombreLugesEte">Nombre de descentes en luge d'été :</label>
-          <input class="champ" type="number" name="NombreLugesEte" id="NombreLugesEte">
+          <input class="champ" type="number" name="NombreLugesEte" id="NombreLugesEte" value="0">
         </div>
       </div>
       <p class="bouton2" onclick="suivant('coordonnees')">Suivant</p>
