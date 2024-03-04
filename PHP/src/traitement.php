@@ -4,7 +4,6 @@ require_once 'classes/Client.php';
 require_once 'classes/Database.php';
 // require 'classes/Reservation.php';
 // require 'classes/Donnee.php';
-echo    "coucou";
 // Les éléments à cocher
 
 //récupération
@@ -228,5 +227,4 @@ if (
     //     header('location:/../index.php?erreur=' . ERREUR_ENREGISTREMENT);
     // }
 } else {
-    echo "erreur";
 }

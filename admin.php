@@ -30,7 +30,7 @@ if (isset($_POST['password']) && $_POST['password'] === $expected_password) {
             <p class="plien">Retour</p>
         </a>
     </div>
-    <form action="php/src/traitement.php">
+    <form action="./PHP/src/traitement.php">
         <fieldset id=" connexion" class="connexion">
             <legend>Connexion</legend>
 
@@ -38,7 +38,7 @@ if (isset($_POST['password']) && $_POST['password'] === $expected_password) {
             <input type="password" name="password" id="password" required>
             <div id="message"></div>
             <div id="message"></div>
-            <?php if ($echec) { ?>
+            <?php if (($_POST['password']) && $_POST['password'] !== $expected_password) { ?>
                 <div class="message echec">
                     Mot de passe invalide.
                 </div>
@@ -52,14 +52,3 @@ if (isset($_POST['password']) && $_POST['password'] === $expected_password) {
 </body>
 
 </html>
-<?php
-session_start();
-
-// Mot de passe souhaité
-$expected_password = 'MonMotDePasseSecret';
-
-if (isset($_POST['password']) && $_POST['password'] === $expected_password) {
-    // Mot de passe correct, autoriser l'accès à la page protégée
-    header('Location: page-protegee.php');
-    die;
-}

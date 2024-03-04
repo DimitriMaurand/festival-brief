@@ -1,8 +1,8 @@
 <?php
 session_start();
-require_once 'php/src/classes/Client.php';
-require_once 'php/src/classes/Database.php';
-require_once 'php/src/traitement.php';
+require_once 'PHP/src/classes/Client.php';
+require_once 'PHP/src/classes/Database.php';
+require_once 'PHP/src/traitement.php';
 // if (isset($_SESSION['connecté']) && !empty($_SESSION['user'])) {
 //     // abort
 //     header('location:tableau-de-bord.php');
@@ -30,7 +30,7 @@ if (isset($_GET['erreur'])) {
     <link rel="stylesheet" href="./styles/style.css">
 </head>
 <form action="src/authentication.php" method="post" onsubmit=" return ValidationConnexion()">
-    <h1>confirmation</h1>
+    <h1>Confirmation</h1>
     <div>
         <?php
         $DB = new Database();
