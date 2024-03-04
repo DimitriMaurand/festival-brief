@@ -28,7 +28,7 @@ if (isset($_GET['erreur'])) {
       <p class="plien">Connexion</p>
     </a>
   </div>
-  <form action="php/src/traitement.php" id="inscription" method="POST">
+  <form action="PHP/src/traitement.php" id="inscription" method="POST">
     <fieldset id="reservation" class="fieldset">
       <legend>Réservation</legend>
       <h3>Nombre de réservation(s) :</h3>
